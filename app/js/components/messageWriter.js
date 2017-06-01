@@ -1,9 +1,9 @@
 /**
  * Created by rasulniyazimbetov on 2017-06-01.
  */
-let Container = require('./Container');
+let Component = require('./component');
 
-class MessageWriter extends Container {
+class MessageWriter extends Component {
     constructor() {
         // pass element ids as array
         super(['messageInput', 'submitbtn']);

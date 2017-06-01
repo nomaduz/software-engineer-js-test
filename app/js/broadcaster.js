@@ -5,7 +5,10 @@ let _ = require('lodash');
 let _const = require('./const');
 
 /**
- * @description class that handles all broadcasting states
+ * @description class that handles all broadcasting states.
+ * you can register your state and reference callback
+ * when you register it keeps in normalized container
+ * and when state fires it grabs callback and runs with sent value
  */
 class Broadcaster {
     constructor() {
@@ -16,7 +19,12 @@ class Broadcaster {
     /**
      * @param stateName string
      * @param callback function
-     * @description registers states and adds their callbacks
+     * @description registers states and adds their callbacks.
+     * for now it assumes all components have unique states and can't be register
+     * under same state. However, you could build object/array container that can handle that
+     * maybe you should send some unique tags on from each component
+     * so you won't add one callback several times. then on broadcasting, we just go through array
+     * and call all referenced callbacks
      */
     register(stateName, callback) {
         this.container[stateName] = callback;
@@ -34,6 +42,8 @@ class Broadcaster {
      * @param stateName string
      * @param value any
      * @description goes through the container array and runs callback functions
+     * we could also allow sending multiple values instead of one. we can use call and apply for that
+     * however, these are minor tweaks and overall structure/framework should be like this
      */
     broadcast(stateName, value) {
         if (this.container[stateName]) {

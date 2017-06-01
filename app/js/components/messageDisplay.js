@@ -1,11 +1,11 @@
 /**
  * Created by rasulniyazimbetov on 2017-06-01.
  */
-let Container = require('./Container');
+let Component = require('./component');
 let _const = require('../const');
 
 // this component will show on html whatever you send
-class MessageDisplay extends Container {
+class MessageDisplay extends Component {
 
     constructor() {
         // sending element id to parent constructor

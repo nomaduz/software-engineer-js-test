@@ -7,7 +7,9 @@ let broadcaster = require('../broadcaster');
 let _const = require('../const');
 
 // parent class that all other components will inherit
-class Container {
+// all other components basically does same things, such as getting node element.
+// broadcasting to messageDisplay component, etc. that's why it's better to have parent class
+class Component {
     constructor(viewId) {
         // grab all html nodes
         this.grabView.bind(this)(viewId);
@@ -30,7 +32,7 @@ class Container {
         }
     }
 
-    // each component can register their state when they inherit
+    // each component can register their state and callback
     register(stateName, callback) {
         broadcaster.register(stateName, callback);
     }
@@ -47,4 +49,4 @@ class Container {
     }
 }
 
-module.exports = Container;
+module.exports = Component;

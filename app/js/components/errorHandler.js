@@ -1,10 +1,10 @@
 /**
  * Created by rasulniyazimbetov on 2017-06-01.
  */
-let Container = require('./Container');
+let Component = require('./component');
 let _const = require('../const');
 
-class ErrorHandler extends Container {
+class ErrorHandler extends Component {
 
     constructor() {
         super();
