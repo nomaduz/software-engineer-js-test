@@ -35,8 +35,9 @@ class Container {
         broadcaster.register(stateName, callback);
     }
 
-    // only state reaction is message display component and all other components
-    // can broadcast to that. so we can add it to parent class
+    // only state reaction component we have now is message display component
+    // and all other components can broadcast to that.
+    // so we can add method for that to parent class
     messageDisplay(value) {
         broadcaster.broadcast(_const.MESSAGE_DISPLAY, value);
     }
