@@ -9,6 +9,7 @@ let _const = require('../const');
 // parent class that all other components will inherit
 class Container {
     constructor(viewId) {
+        // grab all html nodes
         this.grabView.bind(this)(viewId);
     }
 
@@ -38,6 +39,10 @@ class Container {
     // can broadcast to that. so we can add it to parent class
     messageDisplay(value) {
         broadcaster.broadcast(_const.MESSAGE_DISPLAY, value);
+    }
+
+    broadcast(stateName, value) {
+        broadcaster.broadcast(stateName, value);
     }
 }
 

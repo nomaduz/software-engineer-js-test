@@ -22,6 +22,14 @@ class Broadcaster {
         this.container[stateName] = callback;
     }
 
+    /**
+     * @param stateName
+     * @description removes state and its callback from container
+     */
+    unregister(stateName) {
+        this.container = _.omit(this.container, stateName);
+    }
+
     /***
      * @param stateName string
      * @param value any

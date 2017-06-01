@@ -4,9 +4,11 @@
 let Container = require('./Container');
 let _const = require('../const');
 
+// this component will show on html whatever you send
 class MessageDisplay extends Container {
 
     constructor() {
+        // sending element id to parent constructor
         super('messages');
         // register callback for state
         this.register(_const.MESSAGE_DISPLAY, this.messageDisplayHandler.bind(this));

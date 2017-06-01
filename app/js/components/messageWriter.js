@@ -13,7 +13,9 @@ class MessageWriter extends Container {
     }
 
     onSubmit() {
+        // get value from input field
         let text = this.elements.messageInput.value;
+        // prepare message
         let message = text ? `User has written "${text}"` : 'User said nothing :(';
         this.messageDisplay(message);
         // to prevent reloading page
