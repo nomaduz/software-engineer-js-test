@@ -17,7 +17,7 @@
         <!-- window that should display all messages -->
         <div id="messageDisplay" class="component">
             <h2>Messages</h2>
-            <div class="messages">
+            <div class="messages" id="messages">
                 Messages should appear here.
             </div>
         </div>
@@ -28,14 +28,14 @@
             <form action="#">
                 <label for="messageInput">Message</label>
                 <input id="messageInput" type="text" placeholder="Your message here..." />
-                <input type="submit" value="Submit" onsubmit="return false" />
+                <input id="submitbtn" type="submit" value="Submit" onsubmit="return false" />
             </form>
         </div>
 
         <!-- component that knows when you have clicked a button -->
         <div id="buttonClicker" class="component">
             <h2>Button clicker</h2>
-            <button>Click me!</button>
+            <button id="clickme">Click me!</button>
         </div>
 
         <!-- JavaScript application entry point (generated automatically) -->

@@ -2,24 +2,47 @@
  * Created by rasulniyazimbetov on 2017-06-01.
  */
 let _ = require('lodash');
+let _const = require('./const');
 
+/**
+ * @description class that handles all broadcasting states
+ */
 class Broadcaster {
     constructor() {
-        // store all callbacks here
+        // keep all state callbacks in this container
         this.container = {};
     }
 
-    register(eventName, callback) {
-        this.container[eventName] = callback;
+    /**
+     * @param stateName string
+     * @param callback function
+     * @description registers states and adds their callbacks
+     */
+    register(stateName, callback) {
+        this.container[stateName] = callback;
     }
 
-    broadcast(eventName, value) {
-        if (this.container[eventName]) {
-            this.container[eventName](value);
+    /***
+     * @param stateName string
+     * @param value any
+     * @description goes through the container array and runs callback functions
+     */
+    broadcast(stateName, value) {
+        if (this.container[stateName]) {
+            // run callback in state
+            this.container[stateName](value);
         } else {
-            // broadcast error event
-            console.log('error');
+            // tell that we are trying to broadcast something that is not there
+            this.error(`event with name ${stateName} is not registered`);
         }
+    }
+
+    /***
+     * @param message
+     * @description broadcasts error so error handler component can pick it up
+     */
+    error(message) {
+        this.broadcast(_const.ERROR_HANDLING, message);
     }
 }
 

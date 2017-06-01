@@ -7,17 +7,17 @@ let _const = require('../const');
 class MessageDisplay extends Container {
 
     constructor() {
-        super();
-        // select message display div
-        this.messageDisplayElement = document.getElementsByClassName('messages');
-        console.log(this.messageDisplayElement);
-        // register event
-        // arrow functions are not working for some reasons.
+        super('messages');
+        // register callback for state
         this.register(_const.MESSAGE_DISPLAY, this.messageDisplayHandler.bind(this));
     }
 
+    /***
+     * @param value
+     * @description callback method when state is fired
+     */
     messageDisplayHandler(value) {
-        this.messageDisplayElement[0].innerHTML = value;
+        this.element.innerHTML = value;
     }
 }
 
